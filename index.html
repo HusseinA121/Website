@@ -3,21 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hussein Al-Ansari | Portfolio</title>
-  <meta name="description" content="Portfolio website for Hussein Al-Ansari featuring engineering projects, marketing experience, and contact information." />
+  <title>Hussein Al-Ansari | Engineering Portfolio</title>
+  <meta name="description" content="Engineering portfolio of Hussein Al-Ansari featuring automation, controls, electrical design, capstone projects, and resume download." />
   <style>
     :root {
-      --bg: #0b1020;
-      --bg-soft: #121933;
-      --card: rgba(18, 25, 51, 0.75);
-      --card-border: rgba(255,255,255,0.08);
-      --text: #f5f7ff;
-      --muted: #a8b0d3;
-      --accent: #7c9cff;
-      --accent-2: #56e0c7;
-      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+      --bg: #0a0d14;
+      --bg-2: #101626;
+      --panel: rgba(18, 24, 38, 0.78);
+      --panel-2: rgba(255, 255, 255, 0.04);
+      --border: rgba(255, 255, 255, 0.09);
+      --text: #f5f7fb;
+      --muted: #aab3c5;
+      --soft: #d9e0ee;
+      --accent: #79a7ff;
+      --accent-2: #59e1bf;
+      --accent-3: #f3b667;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
       --radius: 24px;
-      --max: 1180px;
+      --radius-lg: 34px;
+      --max: 1220px;
     }
 
     * { box-sizing: border-box; }
@@ -27,9 +31,10 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(124,156,255,.22), transparent 32%),
-        radial-gradient(circle at top right, rgba(86,224,199,.14), transparent 25%),
-        linear-gradient(180deg, #08101d 0%, #0b1020 100%);
+        radial-gradient(circle at 15% 15%, rgba(121,167,255,.16), transparent 22%),
+        radial-gradient(circle at 85% 10%, rgba(89,225,191,.10), transparent 22%),
+        radial-gradient(circle at 50% 120%, rgba(243,182,103,.08), transparent 28%),
+        linear-gradient(180deg, #090c12 0%, #0d1320 100%);
       min-height: 100vh;
     }
 
@@ -37,301 +42,440 @@
     img { max-width: 100%; display: block; }
 
     .container {
-      width: min(calc(100% - 32px), var(--max));
+      width: min(calc(100% - 28px), var(--max));
       margin: 0 auto;
+    }
+
+    .glass {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
 
     .nav {
       position: sticky;
       top: 0;
-      z-index: 100;
-      backdrop-filter: blur(14px);
-      background: rgba(8, 16, 29, 0.68);
+      z-index: 50;
+      background: rgba(8, 11, 18, 0.72);
       border-bottom: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(16px);
     }
 
     .nav-inner {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      align-items: center;
+      gap: 24px;
       padding: 16px 0;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       font-weight: 700;
-      letter-spacing: 0.2px;
+      letter-spacing: .2px;
     }
 
-    .brand-badge {
-      width: 40px;
-      height: 40px;
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
       display: grid;
       place-items: center;
-      border-radius: 14px;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #08101d;
+      color: #07111d;
+      font-weight: 900;
       box-shadow: var(--shadow);
-      font-weight: 800;
     }
 
     .nav-links {
       display: flex;
-      align-items: center;
-      gap: 20px;
       flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
     }
 
     .nav-links a {
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: .96rem;
       transition: color .2s ease;
     }
 
     .nav-links a:hover { color: var(--text); }
 
-    .button {
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 13px 18px;
+      min-height: 48px;
+      padding: 12px 18px;
       border-radius: 16px;
-      font-weight: 600;
+      font-weight: 700;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
       border: 1px solid transparent;
-      transition: transform .2s ease, border-color .2s ease, background .2s ease;
       cursor: pointer;
     }
 
-    .button:hover { transform: translateY(-1px); }
-    .button.primary {
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn.primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #06101d;
-      box-shadow: var(--shadow);
+      color: #08121f;
+      box-shadow: 0 18px 40px rgba(89,225,191,.18);
     }
-    .button.secondary {
-      border-color: rgba(255,255,255,0.12);
+
+    .btn.secondary {
+      background: rgba(255,255,255,.03);
+      border-color: rgba(255,255,255,.1);
       color: var(--text);
-      background: rgba(255,255,255,0.02);
+    }
+
+    .btn.dark {
+      background: #0f1524;
+      border-color: rgba(255,255,255,.08);
+      color: var(--soft);
     }
 
     .hero {
-      padding: 72px 0 42px;
+      padding: 54px 0 28px;
     }
 
-    .hero-grid {
+    .hero-wrap {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 28px;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 22px;
       align-items: stretch;
     }
 
-    .hero-card,
-    .glass-card {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-    }
-
-    .hero-card {
+    .hero-left {
+      border-radius: var(--radius-lg);
       padding: 34px;
       position: relative;
       overflow: hidden;
     }
 
+    .hero-left::before {
+      content: "";
+      position: absolute;
+      inset: auto -40px -40px auto;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(121,167,255,.22), transparent 68%);
+      pointer-events: none;
+    }
+
     .eyebrow {
       display: inline-flex;
-      gap: 8px;
       align-items: center;
-      padding: 8px 12px;
+      gap: 8px;
       border-radius: 999px;
-      background: rgba(124,156,255,0.12);
-      color: #dbe4ff;
-      border: 1px solid rgba(124,156,255,0.18);
-      font-size: 0.9rem;
+      padding: 8px 13px;
+      font-size: .9rem;
+      color: #d8e6ff;
+      border: 1px solid rgba(121,167,255,.22);
+      background: rgba(121,167,255,.09);
       margin-bottom: 18px;
     }
 
     h1 {
-      font-size: clamp(2.4rem, 5vw, 4.8rem);
-      line-height: 0.98;
-      margin: 0 0 18px;
-      letter-spacing: -0.04em;
+      margin: 0 0 16px;
+      font-size: clamp(2.8rem, 6vw, 5.6rem);
+      line-height: .95;
+      letter-spacing: -.05em;
     }
 
     .hero p {
-      color: var(--muted);
-      font-size: 1.08rem;
-      line-height: 1.75;
       margin: 0 0 24px;
-      max-width: 62ch;
+      color: var(--muted);
+      font-size: 1.06rem;
+      line-height: 1.8;
+      max-width: 60ch;
     }
 
     .hero-actions {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 28px;
+      gap: 12px;
+      margin-bottom: 30px;
     }
 
-    .stats {
+    .hero-highlights {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 24px;
-    }
-
-    .stat {
-      padding: 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 1.7rem;
-      margin-bottom: 4px;
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .profile-card {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      justify-content: space-between;
-    }
-
-    .portrait {
-      min-height: 280px;
-      border-radius: 22px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
-        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80') center/cover;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .quick-info {
-      display: grid;
       gap: 12px;
     }
 
-    .quick-row {
+    .mini-card {
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 20px;
+      padding: 16px;
+    }
+
+    .mini-card strong {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+    }
+
+    .mini-card span {
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.5;
+    }
+
+    .hero-right {
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .portrait-wrap {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      min-height: 530px;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,.24), transparent 30%),
+        linear-gradient(180deg, #e9ecef 0%, #d8d8d8 100%);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .portrait-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .floating-card {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      padding: 16px 18px;
+      border-radius: 22px;
+      background: rgba(10,13,20,.82);
+      border: 1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(14px);
+    }
+
+    .floating-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+    }
+
+    .floating-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: .95rem;
+    }
+
+    .quick-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .quick-link {
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
       display: flex;
       justify-content: space-between;
-      gap: 18px;
-      padding: 14px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      gap: 10px;
       color: var(--muted);
     }
 
-    .quick-row:last-child { border-bottom: 0; }
-    .quick-row strong { color: var(--text); }
+    .quick-link strong { color: var(--text); }
 
     section {
-      padding: 26px 0;
+      padding: 34px 0;
     }
 
     .section-head {
       display: flex;
       justify-content: space-between;
-      gap: 20px;
       align-items: end;
+      gap: 16px;
       margin-bottom: 20px;
     }
 
     .section-head h2 {
       margin: 0;
-      font-size: clamp(1.7rem, 3vw, 2.5rem);
-      letter-spacing: -0.03em;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: -.04em;
     }
 
     .section-head p {
       margin: 8px 0 0;
       color: var(--muted);
-      max-width: 62ch;
-      line-height: 1.7;
+      line-height: 1.75;
+      max-width: 60ch;
     }
 
-    .chip-row {
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 18px;
+    }
+
+    .panel {
+      border-radius: 28px;
+      padding: 28px;
+    }
+
+    .about-copy p,
+    .panel p,
+    .timeline-card p,
+    .project-card p,
+    .skill-card p,
+    .contact-card p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .tag-row {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      margin-top: 18px;
     }
 
-    .chip {
+    .tag {
       padding: 10px 14px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #dbe4ff;
-      font-size: 0.92rem;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      color: #d8e3fb;
+      font-size: .92rem;
     }
 
-    .project-grid {
+    .stack-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .stack-item {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .stack-item strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .projects-toolbar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.09);
+      background: rgba(255,255,255,.03);
+      color: var(--soft);
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #08121f;
+      border-color: transparent;
+    }
+
+    .projects-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
     }
 
     .project-card {
-      padding: 22px;
+      border-radius: 28px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
       transition: transform .22s ease, border-color .22s ease;
-      min-height: 280px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      min-height: 390px;
     }
 
     .project-card:hover {
       transform: translateY(-5px);
-      border-color: rgba(124,156,255,0.34);
+      border-color: rgba(121,167,255,.28);
     }
 
-    .project-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: flex-start;
-      margin-bottom: 14px;
+    .project-thumb {
+      aspect-ratio: 16 / 10;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.08);
+      background: linear-gradient(135deg, rgba(121,167,255,.15), rgba(89,225,191,.12));
+      margin-bottom: 16px;
     }
 
-    .tag {
-      display: inline-block;
+    .project-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-type {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(86,224,199,.1);
-      border: 1px solid rgba(86,224,199,.18);
-      color: #c9fff5;
-      font-size: 0.85rem;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      color: #dbe4f7;
+      font-size: .86rem;
+      margin-bottom: 10px;
     }
 
     .project-card h3 {
       margin: 0 0 10px;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
+      letter-spacing: -.02em;
     }
 
-    .project-card p {
-      color: var(--muted);
-      line-height: 1.7;
-      margin: 0 0 16px;
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+      margin-bottom: 14px;
     }
 
-    .project-links {
+    .project-meta span {
+      font-size: .82rem;
+      color: #dbe4f7;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      padding: 8px 10px;
+      border-radius: 999px;
+    }
+
+    .project-actions {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      margin-top: auto;
     }
 
     .timeline {
@@ -339,96 +483,123 @@
       gap: 16px;
     }
 
-    .timeline-item {
-      padding: 22px;
+    .timeline-card {
+      border-radius: 26px;
+      padding: 24px;
       display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 20px;
-      align-items: start;
-    }
-
-    .timeline-date {
-      color: #dbe4ff;
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-
-    .timeline-item h3 {
-      margin: 0 0 6px;
-    }
-
-    .timeline-item p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 190px 1fr;
       gap: 18px;
     }
 
-    .panel {
-      padding: 24px;
+    .timeline-date {
+      color: #dce6fb;
+      font-weight: 800;
+      font-size: .95rem;
     }
 
-    .skill-list {
+    .timeline-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+    }
+
+    .skills-grid {
       display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
     }
 
-    .skill-group h3 {
-      margin: 0 0 10px;
-      font-size: 1.05rem;
+    .skill-card {
+      border-radius: 24px;
+      padding: 22px;
+      min-height: 210px;
     }
 
-    .skill-group p {
+    .skill-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.08rem;
+    }
+
+    .resume-banner {
+      border-radius: 30px;
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .resume-banner::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      top: -40px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(89,225,191,.18), transparent 62%);
+      pointer-events: none;
+    }
+
+    .resume-banner h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      letter-spacing: -.04em;
+    }
+
+    .resume-banner p {
       margin: 0;
       color: var(--muted);
       line-height: 1.8;
     }
 
+    .resume-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+
     .contact-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: .9fr 1.1fr;
       gap: 18px;
-      align-items: stretch;
     }
 
     .contact-card {
+      border-radius: 28px;
       padding: 28px;
     }
 
     .contact-list {
       display: grid;
-      gap: 14px;
-      margin-top: 20px;
+      gap: 12px;
+      margin-top: 16px;
     }
 
     .contact-item {
-      padding: 16px 18px;
+      padding: 16px;
       border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
       color: var(--muted);
     }
 
     .contact-item strong {
       display: block;
-      color: var(--text);
       margin-bottom: 6px;
+      color: var(--text);
     }
 
     .footer {
-      padding: 34px 0 60px;
+      padding: 30px 0 55px;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: .95rem;
     }
 
     .reveal {
       opacity: 0;
-      transform: translateY(16px);
+      transform: translateY(20px);
       transition: opacity .55s ease, transform .55s ease;
     }
 
@@ -437,47 +608,75 @@
       transform: translateY(0);
     }
 
-    @media (max-width: 1050px) {
-      .hero-grid,
+    [data-category] { transition: opacity .25s ease, transform .25s ease; }
+    .hidden-card {
+      opacity: 0;
+      transform: scale(.98);
+      pointer-events: none;
+      display: none;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-wrap,
+      .about-grid,
+      .resume-banner,
       .contact-grid,
-      .two-col,
-      .project-grid {
-        grid-template-columns: 1fr;
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .timeline-item {
-        grid-template-columns: 1fr;
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 860px) {
+      .nav-inner,
+      .resume-actions { align-items: flex-start; }
+      .hero-wrap,
+      .about-grid,
+      .resume-banner,
+      .contact-grid,
+      .projects-grid,
+      .skills-grid,
+      .timeline-card,
+      .stack-list,
+      .hero-highlights {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-card { gap: 10px; }
+      .portrait-wrap { min-height: 420px; }
+    }
+
+    @media (max-width: 620px) {
       .nav-inner {
         flex-direction: column;
         align-items: flex-start;
       }
 
-      .hero-card,
-      .profile-card,
+      .nav-links { gap: 14px; }
+      .hero-left,
+      .hero-right,
       .panel,
       .project-card,
+      .timeline-card,
+      .skill-card,
       .contact-card,
-      .timeline-item {
+      .resume-banner {
         padding: 20px;
       }
 
-      h1 { font-size: 2.4rem; }
+      h1 { font-size: 2.7rem; }
     }
   </style>
 </head>
 <body>
   <nav class="nav">
     <div class="container nav-inner">
-      <a href="#top" class="brand">
-        <div class="brand-badge">HA</div>
+      <a class="brand" href="#top">
+        <div class="brand-mark">HA</div>
         <span>Hussein Al-Ansari</span>
       </a>
       <div class="nav-links">
@@ -485,73 +684,107 @@
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
+        <a href="#resume">Resume</a>
         <a href="#contact">Contact</a>
-        <a href="#contact" class="button secondary">Let’s Connect</a>
       </div>
     </div>
   </nav>
 
   <main id="top">
     <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-card reveal visible">
-          <div class="eyebrow">Engineering • Automation • Design • Marketing</div>
-          <h1>Building practical systems and polished digital experiences.</h1>
+      <div class="container hero-wrap">
+        <div class="glass hero-left reveal visible">
+          <div class="eyebrow">Automation Engineering • Electrical Design • Controls • Technical Projects</div>
+          <h1>Engineering work that looks polished and performs in the real world.</h1>
           <p>
-            I’m Hussein Al-Ansari, an Automation Engineering student and multidisciplinary creator with experience across electrical design, industrial automation, technical project work, and digital content. I enjoy turning complex ideas into solutions that are clear, functional, and visually strong.
+            I’m Hussein Al-Ansari, an Automation Systems Engineering Technology student focused on control systems, automation, electrical design, industrial integration, and project execution. I enjoy building systems that are technically strong, clearly documented, and easy to present with confidence.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#projects">View Projects</a>
-            <a class="button secondary" href="#contact">Contact Me</a>
+            <a class="btn primary" href="#projects">Explore Projects</a>
+            <a class="btn secondary" href="resume.pdf" download>Download Resume</a>
+            <a class="btn dark" href="#contact">Let’s Connect</a>
           </div>
-          <div class="stats">
-            <div class="stat">
+          <div class="hero-highlights">
+            <div class="mini-card">
               <strong>10+</strong>
-              <span>Major academic and technical projects</span>
+              <span>Portfolio-ready academic and professional projects</span>
             </div>
-            <div class="stat">
-              <strong>3+</strong>
-              <span>Disciplines blended into one portfolio</span>
+            <div class="mini-card">
+              <strong>Automation</strong>
+              <span>Controls, HMIs, PLC integration, industrial communication</span>
             </div>
-            <div class="stat">
-              <strong>100%</strong>
-              <span>Focus on clean execution and detail</span>
+            <div class="mini-card">
+              <strong>Design</strong>
+              <span>Electrical, embedded, documentation, and technical storytelling</span>
             </div>
           </div>
         </div>
 
-        <aside class="glass-card profile-card reveal">
-          <div class="portrait" aria-label="Portfolio cover image"></div>
-          <div>
-            <h2 style="margin:0 0 8px; font-size:1.5rem;">Portfolio Snapshot</h2>
-            <p style="margin:0; color:var(--muted); line-height:1.7;">A focused mix of engineering projects, system design, automation work, and creative communication.</p>
+        <aside class="glass hero-right reveal">
+          <div class="portrait-wrap">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80" alt="Professional portrait placeholder" />
+            <div class="floating-card">
+              <h3>Make this section yours</h3>
+              <p>Replace this placeholder image with your professional headshot for a premium homepage look.</p>
+            </div>
           </div>
-          <div class="quick-info">
-            <div class="quick-row"><span>Based in</span><strong>Ontario, Canada</strong></div>
-            <div class="quick-row"><span>Focus Areas</span><strong>Automation, Electrical Design, Digital Strategy</strong></div>
-            <div class="quick-row"><span>Website</span><strong>husseinalansari.com</strong></div>
+          <div class="quick-links">
+            <div class="quick-link"><strong>LinkedIn</strong><span>linkedin.com/in/hussein-alansari</span></div>
+            <div class="quick-link"><strong>Email</strong><span>alansarihussein@gmail.com</span></div>
+            <div class="quick-link"><strong>Phone</strong><span>(905) 818-8260</span></div>
           </div>
         </aside>
       </div>
     </section>
 
     <section id="about">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <h2>About Me</h2>
-            <p>
-              My background combines technical problem-solving with communication and presentation skills. I’ve worked on automation systems, capstone builds, control-focused projects, motion analysis, digital content, and portfolio-ready documentation that bridges engineering and storytelling.
-            </p>
+      <div class="container about-grid">
+        <div class="glass panel about-copy reveal">
+          <div class="section-head" style="margin-bottom: 14px;">
+            <div>
+              <h2>About Me</h2>
+              <p>
+                My background sits at the intersection of engineering execution and professional presentation. I’ve worked on control systems, HMIs, industrial communication, electrical design support, motion-focused automation tasks, embedded systems, and capstone development.
+              </p>
+            </div>
+          </div>
+          <p>
+            What sets my work apart is that I care about both the build and the final result. I like turning technical complexity into something that is organized, clear, and visually strong. Whether it’s a PLC project, a design document, an automation workflow, or a portfolio presentation, I aim for work that is thoughtful and easy to understand.
+          </p>
+          <div class="tag-row">
+            <span class="tag">PLC & HMI Development</span>
+            <span class="tag">Industrial Networks</span>
+            <span class="tag">Electrical Design</span>
+            <span class="tag">Embedded Systems</span>
+            <span class="tag">Automation Workflows</span>
+            <span class="tag">Technical Documentation</span>
           </div>
         </div>
-        <div class="chip-row reveal">
-          <span class="chip">Automation Engineering</span>
-          <span class="chip">Electrical Design</span>
-          <span class="chip">Industrial Systems</span>
-          <span class="chip">Motion & Controls</span>
-          <span class="chip">Content Creation</span>
-          <span class="chip">Project Documentation</span>
+
+        <div class="glass panel reveal">
+          <div class="section-head" style="margin-bottom: 10px;">
+            <div>
+              <h2 style="font-size:1.6rem;">Core Focus Areas</h2>
+            </div>
+          </div>
+          <div class="stack-list">
+            <div class="stack-item">
+              <strong>Automation & Controls</strong>
+              PLC programming, interlocks, ladder logic, remote I/O, and HMI-driven systems.
+            </div>
+            <div class="stack-item">
+              <strong>Industrial Integration</strong>
+              EtherNet/IP, hardware coordination, field devices, sensors, and actuator-based systems.
+            </div>
+            <div class="stack-item">
+              <strong>Electrical & Technical Design</strong>
+              System layouts, electrical planning, component integration, and practical implementation.
+            </div>
+            <div class="stack-item">
+              <strong>Professional Presentation</strong>
+              Clear reports, project writeups, portfolio design, and recruiter-friendly communication.
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -561,55 +794,136 @@
         <div class="section-head reveal">
           <div>
             <h2>Featured Projects</h2>
-            <p>These are sample cards you can customize with your real portfolio links, images, demos, and writeups.</p>
+            <p>
+              This section is designed to look much more premium than your old site. Each card can link to a dedicated case study, presentation, report, video demo, or GitHub repository.
+            </p>
+          </div>
+          <div class="projects-toolbar">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="school">School</button>
+            <button class="filter-btn" data-filter="work">Work</button>
+            <button class="filter-btn" data-filter="automation">Automation</button>
           </div>
         </div>
-        <div class="project-grid">
-          <article class="glass-card project-card reveal">
-            <div>
-              <div class="project-top">
-                <span class="tag">Capstone</span>
-              </div>
-              <h3>Drinkify Soda Dispenser</h3>
-              <p>
-                A compact beverage dispensing concept integrating Arduino-based control, pumps, sensors, HMI planning, and system layout for a low-cost user-friendly machine.
-              </p>
+
+        <div class="projects-grid">
+          <article class="glass project-card reveal" data-category="school automation">
+            <div class="project-thumb">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" alt="Drinkify project placeholder" />
             </div>
-            <div class="project-links">
-              <a class="button secondary" href="#">Case Study</a>
-              <a class="button secondary" href="#">Demo</a>
+            <div class="project-type">Capstone Project</div>
+            <h3>Drinkify Smart Soda Dispenser</h3>
+            <p>
+              An IoT-enabled soda dispensing system integrating Arduino-based control, pumps, valves, sensors, HMI elements, and cloud-ready monitoring.
+            </p>
+            <div class="project-meta">
+              <span>Arduino</span>
+              <span>IoT</span>
+              <span>HMI</span>
+            </div>
+            <div class="project-actions">
+              <a class="btn secondary" href="#">View Case Study</a>
+              <a class="btn dark" href="#">Watch Demo</a>
             </div>
           </article>
 
-          <article class="glass-card project-card reveal">
-            <div>
-              <div class="project-top">
-                <span class="tag">Automation</span>
-              </div>
-              <h3>Industrial Motion & Servo Sizing</h3>
-              <p>
-                Motion Analyzer work involving axis sizing, load considerations, motion profiles, and technical documentation for automation-focused machine applications.
-              </p>
+          <article class="glass project-card reveal" data-category="school automation">
+            <div class="project-thumb">
+              <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80" alt="Machine integration placeholder" />
             </div>
-            <div class="project-links">
-              <a class="button secondary" href="#">Details</a>
-              <a class="button secondary" href="#">Results</a>
+            <div class="project-type">Industrial Automation</div>
+            <h3>SMC Machine Integration with OMRON HMI</h3>
+            <p>
+              A control and visualization project combining PLC logic, tank process control, Ethernet/IP communication, and operator-facing HMI functionality.
+            </p>
+            <div class="project-meta">
+              <span>PLC</span>
+              <span>HMI</span>
+              <span>EtherNet/IP</span>
+            </div>
+            <div class="project-actions">
+              <a class="btn secondary" href="#">Project Details</a>
+              <a class="btn dark" href="#">Video Walkthrough</a>
             </div>
           </article>
 
-          <article class="glass-card project-card reveal">
-            <div>
-              <div class="project-top">
-                <span class="tag">Digital</span>
-              </div>
-              <h3>Marketing & Brand Campaign Work</h3>
-              <p>
-                Social media and content strategy work focused on audience engagement, brand fit, storytelling, and concise campaign execution across digital platforms.
-              </p>
+          <article class="glass project-card reveal" data-category="work automation">
+            <div class="project-thumb">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="Power Automate placeholder" />
             </div>
-            <div class="project-links">
-              <a class="button secondary" href="#">Portfolio</a>
-              <a class="button secondary" href="#">Creative</a>
+            <div class="project-type">Workflow Automation</div>
+            <h3>Power Automate Intelligence</h3>
+            <p>
+              A workflow system built to reduce manual reporting, organize project updates, summarize meeting notes, and connect Microsoft 365 tools for faster team communication.
+            </p>
+            <div class="project-meta">
+              <span>Power Automate</span>
+              <span>Planner</span>
+              <span>SharePoint</span>
+            </div>
+            <div class="project-actions">
+              <a class="btn secondary" href="#">See Workflow</a>
+              <a class="btn dark" href="#">Live Example</a>
+            </div>
+          </article>
+
+          <article class="glass project-card reveal" data-category="school automation">
+            <div class="project-thumb">
+              <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80" alt="Industrial networks placeholder" />
+            </div>
+            <div class="project-type">Controls & Networking</div>
+            <h3>Industrial Networks & Controllers</h3>
+            <p>
+              Master-slave control integration between Allen-Bradley and Click PLC platforms featuring interlocking, analog scaling, VFD integration, and industrial communications.
+            </p>
+            <div class="project-meta">
+              <span>Allen-Bradley</span>
+              <span>Click PLC</span>
+              <span>VFD</span>
+            </div>
+            <div class="project-actions">
+              <a class="btn secondary" href="#">Read Report</a>
+              <a class="btn dark" href="#">Project Page</a>
+            </div>
+          </article>
+
+          <article class="glass project-card reveal" data-category="work">
+            <div class="project-thumb">
+              <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1200&q=80" alt="Marine electrical project placeholder" />
+            </div>
+            <div class="project-type">Electrical Engineering Support</div>
+            <h3>JSS & OOSV Marine Projects</h3>
+            <p>
+              Electrical support work involving cable management, routing coordination, vendor communication, spreadsheet tracking, and project-side execution for ship-based systems.
+            </p>
+            <div class="project-meta">
+              <span>Cabling</span>
+              <span>Excel</span>
+              <span>Coordination</span>
+            </div>
+            <div class="project-actions">
+              <a class="btn secondary" href="#">Project Summary</a>
+              <a class="btn dark" href="#">Learn More</a>
+            </div>
+          </article>
+
+          <article class="glass project-card reveal" data-category="school">
+            <div class="project-thumb">
+              <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80" alt="FPGA placeholder" />
+            </div>
+            <div class="project-type">Digital Systems</div>
+            <h3>3-Level Elevator Control System</h3>
+            <p>
+              A digital-logic elevator control project built around FPGA concepts, display integration, input handling, circuit logic, and hardware testing.
+            </p>
+            <div class="project-meta">
+              <span>FPGA</span>
+              <span>Logic Design</span>
+              <span>Hardware</span>
+            </div>
+            <div class="project-actions">
+              <a class="btn secondary" href="#">Case Study</a>
+              <a class="btn dark" href="#">Photos</a>
             </div>
           </article>
         </div>
@@ -620,35 +934,37 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <h2>Experience & Journey</h2>
-            <p>A simple timeline section that you can tailor with internships, work terms, student leadership, and technical milestones.</p>
+            <h2>Experience</h2>
+            <p>
+              A cleaner and more recruiter-friendly timeline to show growth across engineering work, technical design, and automation-focused roles.
+            </p>
           </div>
         </div>
         <div class="timeline">
-          <div class="glass-card timeline-item reveal">
-            <div class="timeline-date">Recent</div>
+          <div class="glass timeline-card reveal">
+            <div class="timeline-date">Recent Experience</div>
             <div>
-              <h3>Electrical Design & Automation Work</h3>
+              <h3>Control Systems Specialist (Co-op) — RidgeTech Automation</h3>
               <p>
-                Worked on technical design tasks involving parts selection, automation hardware, motion sizing, documentation, and engineering coordination.
+                Supported PLC and HMI programming, industrial automation tasks, and training module development using tools such as Emulate3D, FactoryTalk, and Echo PLC platforms.
               </p>
             </div>
           </div>
-          <div class="glass-card timeline-item reveal">
-            <div class="timeline-date">University Projects</div>
+          <div class="glass timeline-card reveal">
+            <div class="timeline-date">Design Experience</div>
             <div>
-              <h3>Automation Engineering Project Development</h3>
+              <h3>Electrical Design / Hardware Support — Eclipse Automation</h3>
               <p>
-                Built hands-on experience through control systems, industrial networking, HMI logic, instrumentation, capstone planning, and system-level thinking.
+                Contributed to engineering deliverables involving automation hardware, electrical design support, documentation, and coordination for real machine systems.
               </p>
             </div>
           </div>
-          <div class="glass-card timeline-item reveal">
-            <div class="timeline-date">Creative Work</div>
+          <div class="glass timeline-card reveal">
+            <div class="timeline-date">Academic Projects</div>
             <div>
-              <h3>Digital Marketing & Content Creation</h3>
+              <h3>Automation Systems Engineering Technology — McMaster University</h3>
               <p>
-                Produced content and campaign ideas for brands and student organizations, combining visual presentation, audience awareness, and strategic communication.
+                Developed practical experience across embedded control, industrial networking, instrumentation, system integration, HMIs, and capstone-level engineering execution.
               </p>
             </div>
           </div>
@@ -657,48 +973,48 @@
     </section>
 
     <section id="skills">
-      <div class="container two-col">
-        <div class="glass-card panel reveal">
-          <div class="section-head" style="margin-bottom:12px;">
-            <div>
-              <h2 style="font-size:1.7rem;">Skills</h2>
-            </div>
-          </div>
-          <div class="skill-list">
-            <div class="skill-group">
-              <h3>Technical</h3>
-              <p>Automation systems, controls, industrial hardware, electrical documentation, servo sizing, instrumentation, PLC/HMI concepts, system integration.</p>
-            </div>
-            <div class="skill-group">
-              <h3>Tools</h3>
-              <p>Arduino, MATLAB, Simulink, CAD-related workflows, Microsoft Office, Canva, CapCut, digital content tools, technical documentation platforms.</p>
-            </div>
-            <div class="skill-group">
-              <h3>Strengths</h3>
-              <p>Clear communication, detail orientation, cross-functional thinking, leadership, problem-solving, presentation design, structured project execution.</p>
-            </div>
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h2>Skills & Tools</h2>
+            <p>
+              Organized into clear buckets so recruiters and hiring managers can scan your strengths quickly.
+            </p>
           </div>
         </div>
-
-        <div class="glass-card panel reveal">
-          <div class="section-head" style="margin-bottom:12px;">
-            <div>
-              <h2 style="font-size:1.7rem;">What I Bring</h2>
-            </div>
+        <div class="skills-grid">
+          <div class="glass skill-card reveal">
+            <h3>Controls & Automation</h3>
+            <p>PLC programming, ladder logic, interlocks, HMI configuration, industrial control flow, sensors, actuators, and troubleshooting.</p>
           </div>
-          <div class="skill-list">
-            <div class="skill-group">
-              <h3>Engineering Mindset</h3>
-              <p>I like solving real problems with structured thinking, precise execution, and attention to system-level details.</p>
-            </div>
-            <div class="skill-group">
-              <h3>Creative Communication</h3>
-              <p>I can present technical and non-technical work in a way that feels polished, digestible, and professional.</p>
-            </div>
-            <div class="skill-group">
-              <h3>Versatility</h3>
-              <p>My work sits at the intersection of technical systems, visual communication, and practical user-focused design.</p>
-            </div>
+          <div class="glass skill-card reveal">
+            <h3>Industrial Communication</h3>
+            <p>EtherNet/IP concepts, networked automation, master-slave communication, device integration, and plant-floor coordination.</p>
+          </div>
+          <div class="glass skill-card reveal">
+            <h3>Electrical & Embedded</h3>
+            <p>Arduino development, wiring, low-voltage system integration, component selection, prototype implementation, and testing.</p>
+          </div>
+          <div class="glass skill-card reveal">
+            <h3>Software & Documentation</h3>
+            <p>MATLAB, Simulink, Power Automate, technical writeups, reports, presentations, and structured project documentation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resume">
+      <div class="container">
+        <div class="glass resume-banner reveal">
+          <div>
+            <h2>Download My Resume</h2>
+            <p>
+              Add your actual PDF file to the root of your GitHub repository and name it <strong>resume.pdf</strong>. This button will then let visitors download it instantly.
+            </p>
+          </div>
+          <div class="resume-actions">
+            <a class="btn primary" href="resume.pdf" download>Download Resume</a>
+            <a class="btn secondary" href="resume.pdf" target="_blank" rel="noopener">Preview Resume</a>
           </div>
         </div>
       </div>
@@ -706,37 +1022,31 @@
 
     <section id="contact">
       <div class="container contact-grid">
-        <div class="glass-card contact-card reveal">
-          <div class="section-head" style="margin-bottom:12px;">
+        <div class="glass contact-card reveal">
+          <div class="section-head" style="margin-bottom: 8px;">
             <div>
-              <h2>Let’s Build Something Great</h2>
+              <h2>Let’s Connect</h2>
               <p>
-                This section can be used for recruiters, collaborators, professors, clients, or anyone interested in your work. Replace the placeholders below with your actual information.
+                Whether it’s for internships, full-time engineering roles, project collaboration, or technical conversations, I’d be glad to connect.
               </p>
             </div>
           </div>
           <div class="contact-list">
-            <div class="contact-item">
-              <strong>Email</strong>
-              you@example.com
-            </div>
-            <div class="contact-item">
-              <strong>LinkedIn</strong>
-              linkedin.com/in/yourprofile
-            </div>
-            <div class="contact-item">
-              <strong>Location</strong>
-              Ontario, Canada
-            </div>
+            <div class="contact-item"><strong>Email</strong>alansarihussein@gmail.com</div>
+            <div class="contact-item"><strong>LinkedIn</strong>linkedin.com/in/hussein-alansari</div>
+            <div class="contact-item"><strong>Phone</strong>(905) 818-8260</div>
+            <div class="contact-item"><strong>Website</strong>husseinalansari.com</div>
           </div>
         </div>
-
-        <div class="glass-card contact-card reveal">
-          <h2 style="margin:0 0 12px; font-size:1.7rem;">Quick Intro</h2>
-          <p style="color:var(--muted); line-height:1.8; margin:0 0 18px;">
-            I’m always interested in opportunities involving engineering design, automation, technical project work, and strong communication. This portfolio is fully customizable and ready to publish on GitHub Pages.
+        <div class="glass contact-card reveal">
+          <h2 style="margin:0 0 12px; font-size: 2rem; letter-spacing: -.03em;">Ready for a polished final version</h2>
+          <p>
+            This layout is already dramatically stronger than the old Canva-style pages. To make it truly premium, swap in your real headshot, project thumbnails, project links, resume PDF, and demo videos.
           </p>
-          <a class="button primary" href="mailto:you@example.com">Email Me</a>
+          <div class="hero-actions" style="margin-top: 18px; margin-bottom: 0;">
+            <a class="btn primary" href="mailto:alansarihussein@gmail.com">Email Me</a>
+            <a class="btn secondary" href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
         </div>
       </div>
     </section>
@@ -753,15 +1063,30 @@
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.12 });
 
-    document.querySelectorAll('.reveal').forEach((el, index) => {
-      el.style.transitionDelay = `${Math.min(index * 70, 300)}ms`;
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = `${Math.min(i * 55, 260)}ms`;
       observer.observe(el);
+    });
+
+    const filterButtons = document.querySelectorAll('[data-filter]');
+    const projectCards = document.querySelectorAll('[data-category]');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const filter = button.dataset.filter;
+
+        projectCards.forEach(card => {
+          const categories = card.dataset.category.split(' ');
+          const show = filter === 'all' || categories.includes(filter);
+          card.classList.toggle('hidden-card', !show);
+        });
+      });
     });
   </script>
 </body>
