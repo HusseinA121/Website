@@ -251,6 +251,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center top;
     }
 
     .floating-card {
@@ -621,7 +622,6 @@
       .about-grid,
       .resume-banner,
       .contact-grid,
-      .skills-grid,
       .projects-grid {
         grid-template-columns: 1fr 1fr;
       }
@@ -634,19 +634,23 @@
     @media (max-width: 860px) {
       .nav-inner,
       .resume-actions { align-items: flex-start; }
+
       .hero-wrap,
       .about-grid,
       .resume-banner,
       .contact-grid,
       .projects-grid,
       .skills-grid,
-      .timeline-card,
       .stack-list,
       .hero-highlights {
         grid-template-columns: 1fr;
       }
 
-      .timeline-card { gap: 10px; }
+      .timeline-card {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
       .portrait-wrap { min-height: 420px; }
     }
 
@@ -657,6 +661,7 @@
       }
 
       .nav-links { gap: 14px; }
+
       .hero-left,
       .hero-right,
       .panel,
@@ -701,7 +706,7 @@
           </p>
           <div class="hero-actions">
             <a class="btn primary" href="#projects">Explore Projects</a>
-            <a class="btn secondary" href="resume.pdf" download>Download Resume</a>
+            <a class="btn secondary" href="Hussein Al-Ansari.pdf" download>Download Resume</a>
             <a class="btn dark" href="#contact">Let’s Connect</a>
           </div>
           <div class="hero-highlights">
@@ -722,10 +727,10 @@
 
         <aside class="glass hero-right reveal">
           <div class="portrait-wrap">
-           <img src="IMG_7522.jpeg" alt="Hussein Al-Ansari" />
+            <img src="IMG_7522.jpeg" alt="Hussein Al-Ansari" />
             <div class="floating-card">
-              <h3>Make this section yours</h3>
-              <p>Replace this placeholder image with your professional headshot for a premium homepage look.</p>
+              <h3>Automation Systems Engineering Portfolio</h3>
+              <p>Focused on controls, electrical design, industrial integration, and practical engineering execution.</p>
             </div>
           </div>
           <div class="quick-links">
@@ -1007,14 +1012,14 @@
       <div class="container">
         <div class="glass resume-banner reveal">
           <div>
-            <h2>Download My Resume</h2>
+            <h2>View or Download My Resume</h2>
             <p>
-              Add your actual PDF file to the root of your GitHub repository and name it <strong>resume.pdf</strong>. This button will then let visitors download it instantly.
+              You can preview my full resume in your browser or download the PDF directly.
             </p>
           </div>
           <div class="resume-actions">
-            <a class="btn primary" href="resume.pdf" download>Download Resume</a>
-            <a class="btn secondary" href="resume.pdf" target="_blank" rel="noopener">Preview Resume</a>
+            <a class="btn primary" href="Hussein Al-Ansari.pdf" download>Download Resume</a>
+            <a class="btn secondary" href="Hussein Al-Ansari.pdf" target="_blank" rel="noopener">Preview Resume</a>
           </div>
         </div>
       </div>
@@ -1038,14 +1043,15 @@
             <div class="contact-item"><strong>Website</strong>husseinalansari.com</div>
           </div>
         </div>
+
         <div class="glass contact-card reveal">
-          <h2 style="margin:0 0 12px; font-size: 2rem; letter-spacing: -.03em;">Ready for a polished final version</h2>
+          <h2 style="margin:0 0 12px; font-size: 2rem; letter-spacing: -.03em;">Ready to connect</h2>
           <p>
-            This layout is already dramatically stronger than the old Canva-style pages. To make it truly premium, swap in your real headshot, project thumbnails, project links, resume PDF, and demo videos.
+            I’m always open to engineering opportunities, technical collaboration, and conversations about automation, controls, and design.
           </p>
           <div class="hero-actions" style="margin-top: 18px; margin-bottom: 0;">
             <a class="btn primary" href="mailto:alansarihussein@gmail.com">Email Me</a>
-            <a class="btn secondary" href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn secondary" href="https://www.linkedin.com/in/hussein-alansari" target="_blank" rel="noopener">LinkedIn</a>
           </div>
         </div>
       </div>
