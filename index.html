@@ -675,7 +675,57 @@
 
       h1 { font-size: 2.7rem; }
     }
-  </style>
+h1 { font-size: 2.7rem; }
+}
+
+/* Contact Form Styling */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.03);
+  color: #e8edf7;
+  font-size: .95rem;
+  font-family: inherit;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(255,255,255,.45);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form button {
+  margin-top: 6px;
+  width: fit-content;
+}
+
+@media (max-width: 620px) {
+  .form-row {
+    flex-direction: column;
+  }
+}
+
+</style>
 </head>
 <body>
   <nav class="nav">
@@ -1058,16 +1108,27 @@
           </div>
         </div>
 
-        <div class="glass contact-card reveal">
-          <h2 style="margin:0 0 12px; font-size: 2rem; letter-spacing: -.03em;">Ready to connect</h2>
-          <p>
-            I’m always open to engineering opportunities, technical collaboration, and conversations about automation, controls, and design.
-          </p>
-          <div class="hero-actions" style="margin-top: 18px; margin-bottom: 0;">
-            <a class="btn primary" href="mailto:alansarihussein@gmail.com">Email Me</a>
-            <a class="btn secondary" href="https://www.linkedin.com/in/hussein-alansari" target="_blank" rel="noopener">LinkedIn</a>
-          </div>
-        </div>
+      <div class="glass contact-card reveal">
+  <h2 style="margin:0 0 12px; font-size: 2rem; letter-spacing: -.03em;">Let’s Connect</h2>
+  <p>
+    Interested in engineering opportunities, automation projects, or technical collaboration? Send me a message and I’ll get back to you.
+  </p>
+
+  <form class="contact-form" action="https://formspree.io/f/mwvrrbdv" method="POST">
+    <div class="form-row">
+      <input type="text" name="first_name" placeholder="First Name" required>
+      <input type="text" name="last_name" placeholder="Last Name" required>
+    </div>
+
+    <input type="email" name="email" placeholder="Email Address" required>
+    <input type="text" name="subject" placeholder="Subject" required>
+    <textarea name="message" rows="5" placeholder="Message" required></textarea>
+
+    <input type="hidden" name="_next" value="https://husseinalansari.com/#contact">
+
+    <button type="submit" class="btn primary">Send Message</button>
+  </form>
+</div>
       </div>
     </section>
   </main>
