@@ -1114,7 +1114,7 @@ h1 { font-size: 2.7rem; }
     Interested in engineering opportunities, automation projects, or technical collaboration? Send me a message and I’ll get back to you.
   </p>
 
-  <form class="contact-form" action="https://formspree.io/f/mwvrrbdv" method="POST">
+  <form id="contact-form" class="contact-form" action="https://formspree.io/f/mwvrrbdv" method="POST">
     <div class="form-row">
       <input type="text" name="first_name" placeholder="First Name" required>
       <input type="text" name="last_name" placeholder="Last Name" required>
@@ -1124,10 +1124,12 @@ h1 { font-size: 2.7rem; }
     <input type="text" name="subject" placeholder="Subject" required>
     <textarea name="message" rows="5" placeholder="Message" required></textarea>
 
-    <input type="hidden" name="_next" value="https://husseinalansari.com/#contact">
+ 
 
     <button type="submit" class="btn primary">Send Message</button>
   </form>
+ <p id="form-status" style="margin-top:10px; opacity:.8;"></p>
+        
 </div>
       </div>
     </section>
@@ -1140,35 +1142,72 @@ h1 { font-size: 2.7rem; }
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.reveal').forEach((el, i) => {
-      el.style.transitionDelay = `${Math.min(i * 55, 260)}ms`;
-      observer.observe(el);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
     });
+  }, { threshold: 0.12 });
 
-    const filterButtons = document.querySelectorAll('[data-filter]');
-    const projectCards = document.querySelectorAll('[data-category]');
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = `${Math.min(i * 55, 260)}ms`;
+    observer.observe(el);
+  });
 
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        const filter = button.dataset.filter;
+  const filterButtons = document.querySelectorAll('[data-filter]');
+  const projectCards = document.querySelectorAll('[data-category]');
 
-        projectCards.forEach(card => {
-          const categories = card.dataset.category.split(' ');
-          const show = filter === 'all' || categories.includes(filter);
-          card.classList.toggle('hidden-card', !show);
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      const filter = button.dataset.filter;
+
+      projectCards.forEach(card => {
+        const categories = card.dataset.category.split(' ');
+        const show = filter === 'all' || categories.includes(filter);
+        card.classList.toggle('hidden-card', !show);
+      });
+    });
+  });
+
+
+  /* CONTACT FORM SUBMISSION (ADD THIS PART) */
+
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("form-status");
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+
+    fetch(event.target.action, {
+      method: form.method,
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        status.innerHTML = "✅ Thanks — your message has been sent. I'll get back to you soon.";
+        form.reset();
+      } else {
+        response.json().then(data => {
+          if (Object.hasOwn(data, 'errors')) {
+            status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+          } else {
+            status.innerHTML = "❌ Something went wrong. Please try again.";
+          }
         });
-      });
+      }
+    }).catch(error => {
+      status.innerHTML = "❌ Network error. Please try again.";
     });
-  </script>
+  }
+
+  form.addEventListener("submit", handleSubmit);
+
+</script>
 </body>
 </html>
