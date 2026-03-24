@@ -724,7 +724,34 @@ h1 { font-size: 2.7rem; }
     flex-direction: column;
   }
 }
+.image-modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 13, 20, 0.95);
+}
 
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 85vh;
+  border-radius: 16px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 36px;
+  cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -1025,9 +1052,9 @@ Project Summary
   <a class="btn secondary" href="Lab Project Report.pdf" target="_blank">
     Case Study
   </a>
-  <a class="btn dark" href="ELEVATORSYSTEM.png" target="_blank">
-    Photos
-  </a>
+  <a class="btn dark" href="#" onclick="openImageModal('ELEVATORSYSTEM.png')">
+  Photos
+</a>
 </div>
           </article>
         </div>
@@ -1212,6 +1239,12 @@ Project Summary
     </section>
   </main>
 
+<!-- IMAGE MODAL (ADD THIS HERE) -->
+<div id="imageModal" class="image-modal">
+  <span class="close-modal" onclick="closeImageModal()">&times;</span>
+  <img class="modal-content" id="modalImage">
+</div>
+
   <footer class="footer">
     <div class="container">
       © <span id="year"></span> Hussein Al-Ansari. Built for GitHub Pages.
@@ -1284,7 +1317,16 @@ Project Summary
   }
 
   form.addEventListener("submit", handleSubmit);
+function openImageModal(src) {
+  const modal = document.getElementById("imageModal");
+  const img = document.getElementById("modalImage");
+  modal.style.display = "block";
+  img.src = src;
+}
 
+function closeImageModal() {
+  document.getElementById("imageModal").style.display = "none";
+}
 </script>
 </body>
 </html>
