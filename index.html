@@ -630,7 +630,15 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+@media (max-width: 860px) {
+  .battery-content-wrap {
+    order: 1;
+  }
 
+  .battery-pack-card {
+    order: 2;
+  }
+}
     @media (max-width: 860px) {
       .nav-inner,
       .resume-actions { align-items: flex-start; }
