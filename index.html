@@ -676,7 +676,7 @@
       h1 { font-size: 2.7rem; }
     }
 h1 { font-size: 2.7rem; }
-
+}
 
 /* Contact Form Styling */
 
@@ -754,6 +754,122 @@ h1 { font-size: 2.7rem; }
   font-size: 36px;
   cursor: pointer;
 }
+
+
+/* Battery Workforce section */
+.battery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.battery-pack-card,
+.battery-content-wrap {
+  min-height: 640px;
+}
+
+.battery-pack-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+.battery-pack-frame {
+  height: 100%;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.03);
+  border-radius: 22px;
+  padding: 14px;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+  cursor: pointer;
+}
+
+.battery-pack-frame:hover {
+  transform: translateY(-5px);
+  border-color: rgba(121,167,255,.4);
+  box-shadow: 0 14px 40px rgba(0,0,0,.25);
+}
+
+.battery-pack-media {
+  position: relative;
+  height: 100%;
+}
+
+.battery-pack-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+
+.battery-pack-label {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 10px 14px;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.4px;
+}
+
+.battery-content-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.battery-logo-card {
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.03);
+  border-radius: 22px;
+  padding: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.battery-logo-card img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+}
+
+.battery-text-card {
+  flex: 1;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.03);
+  border-radius: 22px;
+  padding: 28px;
+}
+
+@media (max-width: 860px) {
+  .battery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .battery-pack-card,
+  .battery-content-wrap {
+    min-height: auto;
+  }
+
+  .battery-pack-frame {
+    min-height: 380px;
+  }
+
+  .battery-pack-media img {
+    object-fit: contain;
+    background: rgba(255,255,255,.02);
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1062,161 +1178,59 @@ Project Summary
         </div>
       </div>
     </section>
+
 <section id="extracurricular">
   <div class="container">
     <div class="section-head reveal">
       <div>
         <h2>Extracurricular Experience</h2>
-<p>
- 
-</p>
-</div>
-</div>
+        <p></p>
+      </div>
+    </div>
 
-<div class="glass panel reveal" style="padding: 24px;">
-  <div style="
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    align-items: stretch;
-  ">
+    <div class="glass panel reveal" style="padding: 24px;">
+      <div class="battery-grid">
 
-    <!-- LEFT: BATTERY PACK IMAGE -->
-    <div style="display:flex; height:100%;">
-      <a href="BATTERYPACK.png" target="_blank" style="display:block; width:100%; height:100%; text-decoration:none;">
-        <div style="
-          height: 100%;
-          min-height: 640px;
-          border: 1px solid rgba(255,255,255,.08);
-          background: rgba(255,255,255,.03);
-          border-radius: 22px;
-          padding: 14px;
-          transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
-          cursor: pointer;
-        "
-        onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='rgba(121,167,255,.4)'; this.style.boxShadow='0 14px 40px rgba(0,0,0,.25)';"
-        onmouseout="this.style.transform='none'; this.style.borderColor='rgba(255,255,255,.08)'; this.style.boxShadow='none';">
-         <div style="position: relative; height: 100%;">
-  <img
-    src="BATTERYPACK.png"
-    alt="Battery Pack"
-    style="
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 16px;
-      display: block;
-    "
-  >
-
-  <!-- OVERLAY TEXT -->
-  <div style="
-    position: absolute;
-    bottom: 16px;
-    left: 16px;
-    right: 16px;
-    background: rgba(0,0,0,0.55);
-    backdrop-filter: blur(6px);
-    border-radius: 12px;
-    padding: 10px 14px;
-    color: white;
-    font-weight: 600;
-    font-size: 15px;
-    letter-spacing: 0.4px;
-  ">
-    Final Battery Pack
-  </div>
-</div>
+        <div class="battery-pack-card">
+          <a href="BATTERYPACK.png" target="_blank" class="battery-pack-link">
+            <div class="battery-pack-frame">
+              <div class="battery-pack-media">
+                <img src="BATTERYPACK.png" alt="Battery Pack">
+                <div class="battery-pack-label">Final Battery Pack</div>
+              </div>
+            </div>
+          </a>
         </div>
-      </a>
-    </div>
 
-    <!-- RIGHT: LOGO + CONTENT -->
-    <div style="
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-start;
-      height:100%;
-      min-height: 640px;
-      gap: 20px;
-    ">
-      
-      <!-- TOP: LOGO -->
-      <div style="
-        border: 1px solid rgba(255,255,255,.08);
-        background: rgba(255,255,255,.03);
-        border-radius: 22px;
-        padding: 18px;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-      ">
-        <img
-          src="BatteryWorkforce.png"
-          alt="Battery Workforce Challenge Logo"
-          style="
-            width: 100%;
-            max-width: 420px;
-            border-radius: 16px;
-            display:block;
-          "
-        >
-      </div>
+        <div class="battery-content-wrap">
+          <div class="battery-logo-card">
+            <img src="BatteryWorkforce.png" alt="Battery Workforce Challenge Logo">
+          </div>
 
-      <!-- BOTTOM: TEXT -->
-      <div style="
-        flex: 1;
-        border: 1px solid rgba(255,255,255,.08);
-        background: rgba(255,255,255,.03);
-        border-radius: 22px;
-        padding: 28px;
-      ">
-        <h3 style="margin-top:0;">Battery Workforce Challenge (BattChallenge)</h3>
+          <div class="battery-text-card">
+            <h3 style="margin-top:0;">Battery Workforce Challenge (BattChallenge)</h3>
 
-        <p>
-          The Battery Workforce Challenge is a three-year collegiate competition led by the U.S. Department of Energy, Argonne National Laboratory, and Stellantis. It brings together 12 North American universities and community colleges to design, build, test, and integrate a state-of-the-art EV battery pack into a Stellantis-donated vehicle.
-        </p>
+            <p>
+              The Battery Workforce Challenge is a three-year collegiate competition led by the U.S. Department of Energy, Argonne National Laboratory, and Stellantis. It brings together 12 North American universities and community colleges to design, build, test, and integrate a state-of-the-art EV battery pack into a Stellantis-donated vehicle.
+            </p>
 
-        <p>
-          The program simulates real-world engineering through battery pack design, cell and module testing, BMS development, safety, and full vehicle integration. It emphasizes hands-on learning, industry-standard design reviews, and collaboration across disciplines.
-        </p>
+            <p>
+              The program simulates real-world engineering through battery pack design, cell and module testing, BMS development, safety, and full vehicle integration. It emphasizes hands-on learning, industry-standard design reviews, and collaboration across disciplines.
+            </p>
 
-        <p>
-          In my role focused on <strong>Cell Characterization</strong>, I design and execute experiments to evaluate individual battery cell performance. This includes charge/discharge cycling, impedance measurements, and thermal analysis under various operating conditions.
-        </p>
+            <p>
+              In my role focused on <strong>Cell Characterization</strong>, I design and execute experiments to evaluate individual battery cell performance. This includes charge/discharge cycling, impedance measurements, and thermal analysis under various operating conditions.
+            </p>
 
-        <p>
-          I develop test procedures, operate lab instrumentation, and analyze large datasets to identify performance trends and reliability concerns. I also collaborate with mechanical, electrical, and chemical engineering teams to ensure cell-level data informs pack-level design decisions, while maintaining strict adherence to safety standards.
-        </p>
+            <p>
+              I develop test procedures, operate lab instrumentation, and analyze large datasets to identify performance trends and reliability concerns. I also collaborate with mechanical, electrical, and chemical engineering teams to ensure cell-level data informs pack-level design decisions, while maintaining strict adherence to safety standards.
+            </p>
+          </div>
+        </div>
+
       </div>
     </div>
-
   </div>
-</div>
-
-<style>
-  @media (max-width: 900px) {
-    .battery-workforce-section {
-      grid-template-columns: 1fr !important;
-    }
-  }
-</style>
-
-<script>
-  function applyBatteryWorkforceMobileLayout() {
-    const section = document.querySelector('.battery-workforce-section');
-    if (!section) return;
-
-    if (window.innerWidth <= 900) {
-      section.style.gridTemplateColumns = '1fr';
-    } else {
-      section.style.gridTemplateColumns = '1fr 1fr';
-    }
-  }
-
-  window.addEventListener('load', applyBatteryWorkforceMobileLayout);
-  window.addEventListener('resize', applyBatteryWorkforceMobileLayout);
-</script>
 </section>
     <section id="experience">
       <div class="container">
