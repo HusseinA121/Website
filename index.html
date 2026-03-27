@@ -1067,22 +1067,90 @@ Project Summary
     <div class="section-head reveal">
       <div>
         <h2>Extracurricular Experience</h2>
-        <p>
-         
-        </p>
-      </div>
+<p>
+ 
+</p>
+</div>
+</div>
+
+<div class="glass panel reveal" style="padding: 24px;">
+  <div style="
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+  ">
+
+    <!-- LEFT: BATTERY PACK IMAGE -->
+    <div style="display:flex; height:100%;">
+      <a href="BATTERYPACK.png" target="_blank" style="display:block; width:100%; height:100%; text-decoration:none;">
+        <div style="
+          height: 100%;
+          min-height: 640px;
+          border: 1px solid rgba(255,255,255,.08);
+          background: rgba(255,255,255,.03);
+          border-radius: 22px;
+          padding: 14px;
+          transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+          cursor: pointer;
+        "
+        onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='rgba(121,167,255,.4)'; this.style.boxShadow='0 14px 40px rgba(0,0,0,.25)';"
+        onmouseout="this.style.transform='none'; this.style.borderColor='rgba(255,255,255,.08)'; this.style.boxShadow='none';">
+          <img
+            src="BATTERYPACK.png"
+            alt="Battery Pack"
+            style="
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 16px;
+              display: block;
+            "
+          >
+        </div>
+      </a>
     </div>
 
-    <div class="glass panel reveal" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; align-items: center;">
+    <!-- RIGHT: LOGO + CONTENT -->
+    <div style="
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+      height:100%;
+      min-height: 640px;
+      gap: 20px;
+    ">
       
-      <!-- LEFT: LOGO -->
-      <div style="display:flex; justify-content:center; align-items:center; padding: 20px;">
-        <img src="BatteryWorkforce.png" alt="Battery Workforce Challenge Logo"
-     style="width: 100%; max-width: 520px; border-radius: 20px;">
+      <!-- TOP: LOGO -->
+      <div style="
+        border: 1px solid rgba(255,255,255,.08);
+        background: rgba(255,255,255,.03);
+        border-radius: 22px;
+        padding: 18px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+      ">
+        <img
+          src="BatteryWorkforce.png"
+          alt="Battery Workforce Challenge Logo"
+          style="
+            width: 100%;
+            max-width: 420px;
+            border-radius: 16px;
+            display:block;
+          "
+        >
       </div>
 
-      <!-- RIGHT: CONTENT -->
-      <div>
+      <!-- BOTTOM: TEXT -->
+      <div style="
+        flex: 1;
+        border: 1px solid rgba(255,255,255,.08);
+        background: rgba(255,255,255,.03);
+        border-radius: 22px;
+        padding: 28px;
+      ">
         <h3 style="margin-top:0;">Battery Workforce Challenge (BattChallenge)</h3>
 
         <p>
@@ -1101,9 +1169,34 @@ Project Summary
           I develop test procedures, operate lab instrumentation, and analyze large datasets to identify performance trends and reliability concerns. I also collaborate with mechanical, electrical, and chemical engineering teams to ensure cell-level data informs pack-level design decisions, while maintaining strict adherence to safety standards.
         </p>
       </div>
-
     </div>
+
   </div>
+</div>
+
+<style>
+  @media (max-width: 900px) {
+    .battery-workforce-section {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
+
+<script>
+  function applyBatteryWorkforceMobileLayout() {
+    const section = document.querySelector('.battery-workforce-section');
+    if (!section) return;
+
+    if (window.innerWidth <= 900) {
+      section.style.gridTemplateColumns = '1fr';
+    } else {
+      section.style.gridTemplateColumns = '1fr 1fr';
+    }
+  }
+
+  window.addEventListener('load', applyBatteryWorkforceMobileLayout);
+  window.addEventListener('resize', applyBatteryWorkforceMobileLayout);
+</script>
 </section>
     <section id="experience">
       <div class="container">
