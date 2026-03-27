@@ -1075,11 +1075,41 @@ Project Summary
 
     <div class="glass panel reveal" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; align-items: center;">
       
-      <!-- LEFT: LOGO -->
-      <div style="display:flex; justify-content:center; align-items:center; padding: 20px;">
-        <img src="BatteryWorkforce.png" alt="Battery Workforce Challenge Logo"
-     style="width: 100%; max-width: 520px; border-radius: 20px;">
+      <!-- LEFT: IMAGE STACK -->
+<div style="display:flex; flex-direction:column; align-items:center; gap:16px; padding: 20px;">
+
+  <!-- LOGO -->
+  <img src="BatteryWorkforce.png" 
+       alt="Battery Workforce Challenge Logo"
+       style="width: 100%; max-width: 520px; border-radius: 20px;" />
+
+  <!-- BATTERY PACK CARD -->
+  <a href="BATTERYPACK.png" target="_blank" style="text-decoration: none; width: 100%; max-width: 520px;">
+    
+    <div style="
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      border-radius: 20px;
+      padding: 14px;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+      cursor: pointer;
+    "
+    onmouseover="this.style.transform='translateY(-4px)'; this.style.borderColor='rgba(121,167,255,.4)'; this.style.boxShadow='0 12px 30px rgba(0,0,0,.25)';"
+    onmouseout="this.style.transform='none'; this.style.borderColor='rgba(255,255,255,.08)'; this.style.boxShadow='none';"
+    >
+
+      <img src="BATTERYPACK.png" 
+           alt="Battery Pack Design"
+           style="width: 100%; border-radius: 14px; margin-bottom: 10px;" />
+
+      <div style="text-align: center; font-size: .85rem; color: var(--muted);">
+        Click to view full battery pack design
       </div>
+
+    </div>
+  </a>
+
+</div>
 
       <!-- RIGHT: CONTENT -->
       <div>
